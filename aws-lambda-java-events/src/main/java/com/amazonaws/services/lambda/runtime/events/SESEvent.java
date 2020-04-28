@@ -16,9 +16,7 @@ import java.util.List;
  * @author Ahmet Alp
  */
 public class SESEvent implements Serializable, Cloneable {
-
-	private static final long serialVersionUID = 8086472811955015521L;
-    
+	private static final long serialVersionUID = 8086472811955015521L;   
 	private List<SESRecord> records;
 	
     /**
@@ -124,9 +122,7 @@ public class SESEvent implements Serializable, Cloneable {
      *
      */
     public static class SESRecord implements Serializable, Cloneable {
-    	
         private static final long serialVersionUID = -309065548155161859L;
-
         private SES ses;
         private String eventVersion;
         private String eventSource;
@@ -286,10 +282,6 @@ public class SESEvent implements Serializable, Cloneable {
 	     * Common headers in an SES message
 	     */
 	    public static class CommonHeaders implements Serializable, Cloneable{
-	        static final String OBJECT_CLONE_EX = "Got a CloneNotSupportedException from Object.clone() ";
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = -2970350479100195821L;
 			private List<String> from;
 	        private List<String> cc;
@@ -503,22 +495,30 @@ public class SESEvent implements Serializable, Cloneable {
 	        public String toString() {
 	            StringBuilder sb = new StringBuilder();
 	            sb.append("{");
-	            if (getFrom() != null)
+	            if (getFrom() != null) {
 	                sb.append("from: ").append(getFrom().toString()).append(",");
-	            if (getTo() != null)
+	            }
+	            if (getTo() != null) {
 	                sb.append("to: ").append(getTo().toString()).append(",");
-	            if (getBcc() != null)
+	            }
+	            if (getBcc() != null) {
 	                sb.append("bcc: ").append(getBcc().toString()).append(",");
-	            if (getCc() != null)
+	            }    
+	            if (getCc() != null) {
 	                sb.append("cc: ").append(getCc().toString()).append(",");
-	            if (getMessageId() != null)
+	            }
+	            if (getMessageId() != null) {
 	                sb.append("messageId: ").append(getMessageId()).append(",");
-	            if (getReturnPath() != null)
+	            }
+	            if (getReturnPath() != null) {
 	                sb.append("returnPath: ").append(getReturnPath()).append(",");
-	            if (getDate() != null)
+	            }
+	            if (getDate() != null) {
 	                sb.append("date: ").append(getDate()).append(",");
-	            if (getSubject() != null)
+	            }
+	            if (getSubject() != null) {
 	                sb.append("subject: ").append(getSubject());
+	            }
 	            sb.append("}");
 	            return sb.toString();
 	        }
@@ -574,7 +574,7 @@ public class SESEvent implements Serializable, Cloneable {
 	            try {
 	                return (CommonHeaders) super.clone();
 	            } catch (CloneNotSupportedException e) {
-	                throw new IllegalStateException(OBJECT_CLONE_EX, e);
+	                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() ", e);
 	            }
 	        }
 	
@@ -648,10 +648,12 @@ public class SESEvent implements Serializable, Cloneable {
 	        public String toString() {
 	            StringBuilder sb = new StringBuilder();
 	            sb.append("{");
-	            if (getName() != null)
+	            if (getName() != null) {
 	                sb.append("name: ").append(getName()).append(",");
-	            if (getValue() != null)
+	            }
+	            if (getValue() != null) {
 	                sb.append("value: ").append(getValue());
+	            }
 	            sb.append("}");
 	            return sb.toString();
 	        }
@@ -723,14 +725,12 @@ public class SESEvent implements Serializable, Cloneable {
 	                @JsonProperty(value = "destination") List<String> destination,
 	                @JsonProperty(value = "headersTruncated") Boolean headersTruncated,
 	                @JsonProperty(value = "headers") List<Header> headers,
-	                @JsonProperty(value = "commonHeaders") CommonHeaders commonHeaders)
-	        {
+	                @JsonProperty(value = "commonHeaders") CommonHeaders commonHeaders) {
 	            this.messageId = messageId;
 	            this.source = source;
 	            this.sourceArn = sourceArn;
 
-	            if (timestamp != null)
-	            {
+	            if (timestamp != null) {
 	                this.timestamp = DateTime.parse(timestamp);
 	            }
 
@@ -927,8 +927,8 @@ public class SESEvent implements Serializable, Cloneable {
 	        }
 	
 	        /**
-	         * set whether headers should be truncateds
-	         * @param headersTruncated booolean whether headers should be truncated
+	         * set whether headers should be truncated
+	         * @param headersTruncated boolean whether headers should be truncated
 	         */
 	        public void setHeadersTruncated(Boolean headersTruncated) {
 	            this.headersTruncated = headersTruncated;
@@ -995,9 +995,7 @@ public class SESEvent implements Serializable, Cloneable {
 	
 	        /**
 	         * Returns a string representation of this object; useful for testing and debugging.
-	         *
 	         * @return A string representation of this object.
-	         *
 	         * @see Object#toString()
 	         */
 	        @Override
@@ -1207,23 +1205,25 @@ public class SESEvent implements Serializable, Cloneable {
 	
 	        /**
 	         * Returns a string representation of this object; useful for testing and debugging.
-	         *
 	         * @return A string representation of this object.
-	         *
 	         * @see Object#toString()
 	         */
 	        @Override
 	        public String toString() {
 	            StringBuilder sb = new StringBuilder();
 	            sb.append("{");
-	            if (getEmailAddress() != null)
+	            if (getEmailAddress() != null) {
 	                sb.append("emailAddress: ").append(getEmailAddress()).append(",");
-	            if (getAction() != null)
+	            }
+	            if (getAction() != null) {
 	                sb.append("action: ").append(getAction()).append(",");
-	            if (getStatus() != null)
+	            }
+	            if (getStatus() != null) {
 	                sb.append("status: ").append(getStatus()).append(",");
-	            if (getDiagnosticCode() != null)
+	            }
+	            if (getDiagnosticCode() != null) {
 	                sb.append("diagnosticCode: ").append(getDiagnosticCode());
+	            }
 	            sb.append("}");
 	            return sb.toString();
 	        }
@@ -1311,7 +1311,7 @@ public class SESEvent implements Serializable, Cloneable {
 	
 	        /**
 	         * get bounce subType
-	         * @return String bounce subtype
+	         * @return String bounce sub type
 	         */
 	        public String getBounceSubType() {
 	            return this.bounceSubType;
@@ -1360,7 +1360,7 @@ public class SESEvent implements Serializable, Cloneable {
 	        }
 	
 	        /**
-	         * get timestampe
+	         * get timestamp
 	         * @return String when bounce happened
 	         */
 	        public DateTime getTimestamp() {
@@ -1410,8 +1410,8 @@ public class SESEvent implements Serializable, Cloneable {
 	        }
 	
 	        /**
-	         * get remote mta ip
-	         * @return String mta ip address
+	         * get remote Mta ip
+	         * @return String Mta ip address
 	         */
 	        public String getRemoteMtaIp() {
 	            return this.remoteMtaIp;
@@ -1419,14 +1419,14 @@ public class SESEvent implements Serializable, Cloneable {
 	
 	        /**
 	         * set remote mta ip
-	         * @param remoteMtaIp String mta ip address
+	         * @param remoteMtaIp String Mta ip address
 	         */
 	        public void setRemoteMtaIp(String remoteMtaIp) {
 	            this.remoteMtaIp = remoteMtaIp;
 	        }
 	
 	        /**
-	         * @param remoteMtaIp remote mta ip address
+	         * @param remoteMtaIp remote Mta ip address
 	         * @return Bounce
 	         */
 	        public Bounce withRemoteMtaIp(String remoteMtaIp) {
@@ -1435,23 +1435,23 @@ public class SESEvent implements Serializable, Cloneable {
 	        }
 	
 	        /**
-	         * get reporting mta
-	         * @return STring reporting mta
+	         * get reporting Mta
+	         * @return String reporting Mta
 	         */
 	        public String getReportingMta() {
 	            return reportingMta;
 	        }
 	
 	        /**
-	         * set reporting mta
-	         * @param reportingMta String with mta
+	         * set reporting Mta
+	         * @param reportingMta String with Mta
 	         */
 	        public void setReportingMta(String reportingMta) {
 	            this.reportingMta = reportingMta;
 	        }
 	
 	        /**
-	         * @param reportingMta reporting mta
+	         * @param reportingMta reporting Mta
 	         * @return Bounce
 	         */
 	        public Bounce withReportingMta(String reportingMta) {
@@ -1462,29 +1462,34 @@ public class SESEvent implements Serializable, Cloneable {
 	
 	        /**
 	         * Returns a string representation of this object; useful for testing and debugging.
-	         *
 	         * @return A string representation of this object.
-	         *
 	         * @see Object#toString()
 	         */
 	        @Override
 	        public String toString() {
 	            StringBuilder sb = new StringBuilder();
 	            sb.append("{");
-	            if (getBounceType() != null)
+	            if (getBounceType() != null) {
 	                sb.append("bounceType: ").append(getBounceType()).append(",");
-	            if (getBounceSubType() != null)
+	            }
+	            if (getBounceSubType() != null) {
 	                sb.append("bounceSubType: ").append(getBounceSubType()).append(",");
-	            if (getBouncedRecipients() != null)
+	            }
+	            if (getBouncedRecipients() != null) {
 	                sb.append("bouncedRecipients: ").append(getBouncedRecipients().toString()).append(",");
-	            if (getTimestamp() != null)
+	            }
+	            if (getTimestamp() != null) {
 	                sb.append("timestamp: ").append(getTimestamp().toString()).append(",");
-	            if (getFeedbackId() != null)
+	            }
+	            if (getFeedbackId() != null) {
 	                sb.append("feedbackId: ").append(getFeedbackId()).append(",");
-	            if (getRemoteMtaIp() != null)
+	            }
+	            if (getRemoteMtaIp() != null) {
 	                sb.append("remoteMtaIp: ").append(getRemoteMtaIp()).append(",");
-	            if (getReportingMta() != null)
+	            }
+	            if (getReportingMta() != null) {
 	                sb.append("reportingMta: ").append(getReportingMta());
+	            }
 	            sb.append("}");
 	            return sb.toString();
 	        }
@@ -1544,7 +1549,6 @@ public class SESEvent implements Serializable, Cloneable {
 	     * class representing recipient of a complaint
 	     */
 	    public static class ComplainedRecipient implements Serializable, Cloneable {
-	
 			private static final long serialVersionUID = -447419795155744341L;
 			private String emailAddress;
 	
@@ -1571,9 +1575,7 @@ public class SESEvent implements Serializable, Cloneable {
 	
 	        /**
 	         * Returns a string representation of this object; useful for testing and debugging.
-	         *
 	         * @return A string representation of this object.
-	         *
 	         * @see Object#toString()
 	         */
 	        @Override
@@ -1633,7 +1635,7 @@ public class SESEvent implements Serializable, Cloneable {
 	        private String arrivalDate;
 	
 	        /**
-	         * return lis of complaint recipients
+	         * return list of complaint recipients
 	         * @return List of BounceRecipient
 	         */
 	        public List<ComplainedRecipient> getComplainedRecipients() {
@@ -1749,7 +1751,7 @@ public class SESEvent implements Serializable, Cloneable {
 	        }
 	
 	        /**
-	         * @param complaintFeedbackType copmlaint feedback type
+	         * @param complaintFeedbackType complaint feedback type
 	         * @return Complaint
 	         */
 	        public Complaint withComplaintFeedbackType(String complaintFeedbackType) {
@@ -1793,18 +1795,24 @@ public class SESEvent implements Serializable, Cloneable {
 	        public String toString() {
 	            StringBuilder sb = new StringBuilder();
 	            sb.append("{");
-	            if (getComplainedRecipients() != null)
+	            if (getComplainedRecipients() != null) {
 	                sb.append("complainedRecipients: ").append(getComplainedRecipients().toString()).append(",");
-	            if (getTimestamp() != null)
+	            }
+	            if (getTimestamp() != null) {
 	                sb.append("timestamp: ").append(getTimestamp().toString()).append(",");
-	            if (getFeedbackId() != null)
+	            }
+	            if (getFeedbackId() != null) {
 	                sb.append("feedbackId: ").append(getFeedbackId()).append(",");
-	            if (getUserAgent() != null)
+	            }
+	            if (getUserAgent() != null) {
 	                sb.append("userAgent: ").append(getUserAgent()).append(",");
-	            if (getComplaintFeedbackType() != null)
+	            }
+	            if (getComplaintFeedbackType() != null) {
 	                sb.append("complaintFeedbackType: ").append(getComplaintFeedbackType()).append(",");
-	            if (getArrivalDate() != null)
+	            }
+	            if (getArrivalDate() != null) {
 	                sb.append("arrivalDate: ").append(getArrivalDate());
+	            }
 	            sb.append("}");
 	            return sb.toString();
 	        }
